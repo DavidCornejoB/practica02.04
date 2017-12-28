@@ -8,8 +8,26 @@ package modelo;
 
 /**
  *
- * @author Administrador
+ * @author David Cornejo
  */
 public class Pasajero {
     
+    private Persona persona;
+
+    public Pasajero(Persona persona) {
+        this.persona = persona;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+    @Override
+    public String toString() {
+        return "Pasajero{" + "persona=" + persona + '}';
+    } 
 }
