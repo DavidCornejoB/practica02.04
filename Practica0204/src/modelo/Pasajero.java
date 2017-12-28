@@ -10,11 +10,12 @@ package modelo;
  *
  * @author David Cornejo
  */
-public class Pasajero {
+public class Pasajero extends Persona{
     
     private Persona persona;
 
-    public Pasajero(Persona persona) {
+    public Pasajero(Persona persona, String nombre, String apellido, String cedula) {
+        super(nombre, apellido, cedula);
         this.persona = persona;
     }
 

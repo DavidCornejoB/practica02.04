@@ -8,7 +8,7 @@ package modelo;
 
 /**
  *
- * @author Administrador
+ * @author David Cornejo
  */
 public class Viaje {
     
