@@ -27,6 +27,8 @@ public class VentanaPrincipal extends JFrame {
     private VentanaTerminal vT;
     private VentanaCompania vC;
     private VentanaPasajero vP;
+    private VentanaViaje vV;
+    private VentanaBoleto vB;
     
     public VentanaPrincipal(String title){
         super(title);
@@ -42,32 +44,33 @@ public class VentanaPrincipal extends JFrame {
         
         this.menuList = new ArrayList();
         this.menuList.add(new JMenu("Crear"));
-        
+        this.menuList.add(new JMenu("Viaje"));
         
         this.itemMenuList = new ArrayList();
         this.itemMenuList.add(new JMenuItem("Terminal"));
         this.itemMenuList.add(new JMenuItem("Compañia"));
         this.itemMenuList.add(new JMenuItem("Pasajero"));
-        this.itemMenuList.add(new JMenuItem("Nuevo Curso"));
- 
+        this.itemMenuList.add(new JMenuItem("Crear Viaje"));
+        this.itemMenuList.add(new JMenuItem("Ver Boleto"));
         
         this.add(this.escritorio);
         this.setJMenuBar(this.barraMenu);
         
         this.barraMenu.add(this.menuList.get(0));
-       
+        this.barraMenu.add(this.menuList.get(1));
         
         
         this.menuList.get(0).add(this.itemMenuList.get(0));
         this.menuList.get(0).add(this.itemMenuList.get(1));
         this.menuList.get(0).add(this.itemMenuList.get(2));
-        
+        this.menuList.get(1).add(this.itemMenuList.get(3));
+        this.menuList.get(1).add(this.itemMenuList.get(4));
         
         this.itemMenuList.get(0).addActionListener(new EventoVentanaPrincipal(this));
         this.itemMenuList.get(1).addActionListener(new EventoVentanaPrincipal(this));
         this.itemMenuList.get(2).addActionListener(new EventoVentanaPrincipal(this));
-       
-        
+        this.itemMenuList.get(3).addActionListener(new EventoVentanaPrincipal(this));
+        this.itemMenuList.get(4).addActionListener(new EventoVentanaPrincipal(this));
     }
     
 
@@ -126,6 +129,24 @@ public class VentanaPrincipal extends JFrame {
     public void setvP(VentanaPasajero vP) {
         this.vP = vP;
     }
+
+    public VentanaViaje getvV() {
+        return vV;
+    }
+
+    public void setvV(VentanaViaje vV) {
+        this.vV = vV;
+    }
+
+    public VentanaBoleto getvB() {
+        return vB;
+    }
+
+    public void setvB(VentanaBoleto vB) {
+        this.vB = vB;
+    }
+
+   
 
     
     
