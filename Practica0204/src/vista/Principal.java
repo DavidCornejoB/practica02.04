@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package modelo;
+package vista;
 
 /**
  *
@@ -17,6 +17,9 @@ public class Principal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        VentanaPrincipal vP= new VentanaPrincipal("Ventana");
+        vP.setVisible(true);
     }
     
 }
