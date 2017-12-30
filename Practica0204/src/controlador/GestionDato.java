@@ -6,6 +6,7 @@
 package controlador;
 
 import java.util.List;
+import modelo.Boleto;
 import modelo.Compania;
 import modelo.Pasajero;
 import modelo.Terminal;
@@ -23,13 +24,15 @@ public class GestionDato {
     private List<Compania> companiaList;
     private List<Pasajero> pasajeroList;
     private List<Viaje> viajeList;
+    private List<Boleto> boletoList;
     private VentanaPrincipal vPrincipal;
 
-    public GestionDato(List<Terminal> terminalList, List<Compania> companiaList, List<Pasajero> pasajeroList, List<Viaje> viajeList) {
+    public GestionDato(List<Terminal> terminalList, List<Compania> companiaList, List<Pasajero> pasajeroList, List<Viaje> viajeList, List<Boleto> boletoList) {
         this.terminalList = terminalList;
         this.companiaList = companiaList;
         this.pasajeroList = pasajeroList;
         this.viajeList = viajeList;
+        this.boletoList = boletoList;
     }
 
     public boolean addTerminal(Terminal t) {
@@ -46,6 +49,10 @@ public class GestionDato {
 
     public boolean addViaje(Viaje v) {
         return this.viajeList.add(v);
+    }
+
+    public boolean addBoleto(Boleto b) {
+        return this.boletoList.add(b);
     }
 
     public List<Terminal> getTerminalList() {
@@ -87,7 +94,15 @@ public class GestionDato {
     public void setvPrincipal(VentanaPrincipal vPrincipal) {
         this.vPrincipal = vPrincipal;
     }
-    
+
+    public List<Boleto> getBoletoList() {
+        return boletoList;
+    }
+
+    public void setBoletoList(List<Boleto> boletoList) {
+        this.boletoList = boletoList;
+    }
+
     public Terminal buscarTerminal(String txt) {
         Terminal retorno = null;
         int i = 0;

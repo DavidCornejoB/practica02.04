@@ -22,6 +22,10 @@ public class Boleto {
         this.numBoletos = numBoletos;
     }
 
+    public Boleto(Pasajero get) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Pasajero getPasajero() {
         return pasajero;
     }

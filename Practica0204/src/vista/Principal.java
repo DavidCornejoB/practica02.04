@@ -35,7 +35,7 @@ public class Principal {
         List<Terminal> terminalList = new ArrayList();
         List<Viaje> viajeList = new ArrayList();
         
-        GestionDato gd = new GestionDato(terminalList, companiaList, pasajeroList, viajeList);
+        GestionDato gd = new GestionDato(terminalList, companiaList, pasajeroList, viajeList, boletoList);
         VentanaPrincipal vP= new VentanaPrincipal("Ventana", gd);
         vP.setVisible(true);
     }
