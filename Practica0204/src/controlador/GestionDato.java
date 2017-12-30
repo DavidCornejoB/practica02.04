@@ -87,7 +87,7 @@ public class GestionDato {
     public void setvPrincipal(VentanaPrincipal vPrincipal) {
         this.vPrincipal = vPrincipal;
     }
-
+    
     public Terminal buscarTerminal(String txt) {
         Terminal retorno = null;
         int i = 0;

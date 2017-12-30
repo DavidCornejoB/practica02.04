@@ -6,10 +6,28 @@
 
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import vista.VentanaBoleto;
+
 /**
  *
  * @author Administrador
  */
-public class EventoVentanaBoleto {
+public class EventoVentanaBoleto implements ActionListener{
+    
+    private VentanaBoleto vBoleto;
+
+    public EventoVentanaBoleto(VentanaBoleto vBoleto) {
+        this.vBoleto = vBoleto;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        
+        if(ae.getSource().equals(vBoleto.getbGuardar())){
+            
+        }
+    }
     
 }
