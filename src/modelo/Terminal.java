@@ -1,8 +1,11 @@
 
 package modelo;
 
-public class Terminal {
-    
+import java.io.Serializable;
+
+@Entity
+public class Terminal implements Serializable {
+    @Id
     private long id;
     private String nombre;
     private String direccion;

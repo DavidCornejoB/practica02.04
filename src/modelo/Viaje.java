@@ -2,8 +2,13 @@
 
 package modelo;
 
-public class Viaje {
+import java.io.Serializable;
+
+
+@Entity
+public class Viaje implements Serializable {
     
+    @Id
     private long id;
     private Compania compania;
     private String destino;
