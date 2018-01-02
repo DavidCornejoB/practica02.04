@@ -6,18 +6,35 @@
 
 package modelo;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author David Cornejo
  */
-public class Terminal {
+
+@Entity
+public class Terminal implements Serializable{
     
+    @Id
+    private long id;
     private String nombre;
     private String direccion;
 
-    public Terminal(String nombre, String direccion) {
+    public Terminal(long id, String nombre, String direccion) {
+        this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -38,6 +55,7 @@ public class Terminal {
 
     @Override
     public String toString() {
-        return "Terminal{" + "nombre=" + nombre + ", direccion=" + direccion + '}';
-    } 
+        return  id + " | " + nombre + " | " + direccion ;
+    }
+    
 }

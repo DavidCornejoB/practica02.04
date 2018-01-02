@@ -6,18 +6,35 @@
 
 package modelo;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author David Cornejo
  */
-public class Viaje {
+
+@Entity
+public class Viaje implements Serializable{
     
+    @Id
+    private long id;
     private Compania compania;
     private String destino;
 
-    public Viaje(Compania compania, String destino) {
+    public Viaje(long id, Compania compania, String destino) {
+        this.id = id;
         this.compania = compania;
         this.destino = destino;
+    }
+    
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Compania getCompania() {
@@ -38,6 +55,6 @@ public class Viaje {
 
     @Override
     public String toString() {
-        return "Viaje{" + "compania=" + compania + ", destino=" + destino + '}';
-    }  
+        return id + " | " + compania + " | " + destino ;
+    }
 }
