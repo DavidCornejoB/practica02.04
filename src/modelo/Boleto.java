@@ -1,8 +1,12 @@
 
 package modelo;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class Boleto {
-    
+@Entity
+public class Boleto implements Serializable{
+    @Id
     private long id;
     private Pasajero pasajero;
     private Viaje viaje;
