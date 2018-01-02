@@ -111,5 +111,97 @@ public class GestionDato {
         }
         return retorno;
     }
+    
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
+    
+    public boolean insertarTerminal(Terminal t){
+        boolean retorno = false;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(t);
+        em.getTransaction().commit();
+        retorno = true;
+        return retorno;
+    }
+    public List<Terminal> leerTerminal(){
+        List<Terminal> retorno= null;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();
+        em.getTransaction().commit();
+        return retorno;
+    }
+    
+    public boolean insertarViaje(Viaje v){
+        boolean retorno = false;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(v);
+        em.getTransaction().commit();
+        retorno = true;
+        return retorno;
+    }
+    public List<Viaje> leerViaje(){
+        List<Viaje> retorno= null;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        retorno = em.createQuery("SELECT t FROM Viaje v ORDER BY t.id").getResultList();
+        em.getTransaction().commit();
+        return retorno;
+    }
+    
+     public boolean insertarPersona(Persona p){
+        boolean retorno = false;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(p);
+        em.getTransaction().commit();
+        retorno = true;
+        return retorno;
+    }
+    public List<Persona> leerPersona(){
+        List<Persona> retorno= null;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();
+        em.getTransaction().commit();
+        return retorno;
+    }
+    
+     public boolean insertarCompania(Compania c){
+        boolean retorno = false;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(c);
+        em.getTransaction().commit();
+        retorno = true;
+        return retorno;
+    }
+    public List<Compania> leerCompania(){
+        List<Compania> retorno= null;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();
+        em.getTransaction().commit();
+        return retorno;
+    }
+    
+     public boolean insertarBoleto(Boleto b){
+        boolean retorno = false;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(b);
+        em.getTransaction().commit();
+        retorno = true;
+        return retorno;
+    }
+    public List<Boleto> leerBoleto(){
+        List<Boleto> retorno= null;
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();
+        em.getTransaction().commit();
+        return retorno;
+    }
 
 }
