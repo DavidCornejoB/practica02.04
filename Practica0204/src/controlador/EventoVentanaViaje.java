@@ -42,10 +42,10 @@ public class EventoVentanaViaje implements ActionListener {
         Object[][] retorno = new Object[size][i];
         int a = 0;
         for (Viaje v : this.vViaje.getGd().getViajeList()) {
-            retorno[i][0] = a + 1;
-            retorno[i][1] = v.getCompania().getNombre();
-            retorno[i][2] = v.getDestino();
-            i++;
+            retorno[a][0] = a + 1;
+            retorno[a][1] = v.getCompania().getNombre();
+            retorno[a][2] = v.getDestino();
+            a++;
         }
         return retorno;
 
