@@ -169,6 +169,7 @@ public class GestionDato {
         retorno = true;
         return retorno;
     }
+    
     public List<Compania> leerCompania(){
         List<Compania> retorno= null;
         EntityManager em = emf.createEntityManager();
@@ -187,6 +188,7 @@ public class GestionDato {
         retorno = true;
         return retorno;
     }
+    
     public List<Boleto> leerBoleto(){
         List<Boleto> retorno= null;
         EntityManager em = emf.createEntityManager();
