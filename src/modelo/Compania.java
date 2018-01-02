@@ -1,8 +1,12 @@
 
 package modelo;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class Compania {
-    
+@Entity
+public class Compania implements Serializable {
+    @Id
     private long id;
     private String nombre;
     private int numUnidades;
