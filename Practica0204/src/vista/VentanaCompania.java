@@ -5,11 +5,13 @@
  */
 package vista;
 
+import controlador.EventoVentanaCompania;
 import controlador.GestionDato;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
@@ -20,7 +22,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Compania;
-
+import modelo.Terminal;
 
 /**
  *
@@ -41,10 +43,11 @@ public class VentanaCompania extends JInternalFrame {
     private GestionDato gd;
     private JComboBox comboBox;
 
-    public VentanaCompania(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
+    public VentanaCompania(GestionDato gd, String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
         this.setBounds(440, 0, 400, 300);
         this.setVisible(true);
+        this.gd = gd;
         this.iniciaComponentes();
     }
 
@@ -63,18 +66,18 @@ public class VentanaCompania extends JInternalFrame {
         this.txtList.add(new JTextField(15));
         this.txtList.add(new JTextField(15));
 
-        this.comboBox=new JComboBox();
-        
+        this.comboBox = new JComboBox(this.cargaComboTerminal(this.getGd().getTerminalList().size()));
+
         this.bGuardar = new JButton("Guardar");
-        //this.bGuardar.addActionListener(new EventoVentanaDocente(this));
+        this.bGuardar.addActionListener(new EventoVentanaCompania(this));
 
-        //this.bGenerar.addActionListener(new EventoVentanaDocente(this));
-        this.encabezado = new Object[3];
-        this.encabezado[0] = "Nombre";
-        this.encabezado[1] = "N° Unidades";
-        this.encabezado[2] = "Terminal";
+        this.encabezado = new Object[4];
+        this.encabezado[0] = "N°";
+        this.encabezado[1] = "Nombre";
+        this.encabezado[2] = "N° Unidades";
+        this.encabezado[3] = "Terminal";
 
-        //this.cargaTerminal(this.gd.getTerminalList().size(), 3);
+        this.cargaCompania(this.gd.getCompaniaList().size(), 4);
 
         this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
         this.tabla = new JTable(this.modeloTabla);
@@ -94,16 +97,30 @@ public class VentanaCompania extends JInternalFrame {
 
     }
 
-    public Object[][] cargaTerminal(int f, int c) {
+    public Object[][] cargaCompania(int f, int c) {
         Object[][] retorno = new Object[f][c];
         int i = 0;
         for (Compania com : this.gd.getCompaniaList()) {
-            retorno[i][0] = com.getNombre();
-            retorno[i][1] = com.getNumUnidades();
-            retorno[i][2] = com.getTerminal().getNombre();
+            retorno[i][0] = i + 1;
+            retorno[i][1] = com.getNombre();
+            retorno[i][2] = com.getNumUnidades();
+            retorno[i][3] = com.getTerminal().getNombre();
 
             i++;
         }
+        return retorno;
+    }
+
+    private Object[] cargaComboTerminal(int f) {
+
+        Object[] retorno = new Object[f];
+        int i = 0;
+
+        for (Terminal t : this.gd.getTerminalList()) {
+            retorno[i] = t.getNombre();
+            i++;
+        }
+
         return retorno;
     }
 
@@ -187,6 +204,19 @@ public class VentanaCompania extends JInternalFrame {
         this.bGenerar = bGenerar;
     }
 
+    public GestionDato getGd() {
+        return gd;
+    }
 
+    public void setGd(GestionDato gd) {
+        this.gd = gd;
+    }
 
+    public JComboBox getComboBox() {
+        return comboBox;
+    }
+
+    public void setComboBox(JComboBox comboBox) {
+        this.comboBox = comboBox;
+    }
 }

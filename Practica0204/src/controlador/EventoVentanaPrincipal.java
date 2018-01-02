@@ -32,24 +32,24 @@ public class EventoVentanaPrincipal implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource().equals(this.vPrincipal.getItemMenuList().get(0))) {
-            this.vPrincipal.setvT(new VentanaTerminal ("Nueva Terminal", true, true, true, true));
+            this.vPrincipal.setvT(new VentanaTerminal(this.vPrincipal.getGd(), "Nueva Terminal", true, true, true, true));
             this.vPrincipal.getEscritorio().add(this.vPrincipal.getvT());
         }
         if (e.getSource().equals(this.vPrincipal.getItemMenuList().get(1))) {
-        this.vPrincipal.setvC(new VentanaCompania("Nueva Compañia", true, true, true, true));
-        this.vPrincipal.getEscritorio().add(this.vPrincipal.getvC());
+            this.vPrincipal.setvC(new VentanaCompania(this.vPrincipal.getGd(), "Nueva Compañia", true, true, true, true));
+            this.vPrincipal.getEscritorio().add(this.vPrincipal.getvC());
         }
         if (e.getSource().equals(this.vPrincipal.getItemMenuList().get(2))) {
-        this.vPrincipal.setvP(new VentanaPasajero("Nuevo Pasajero", true, true, true, true));
-        this.vPrincipal.getEscritorio().add(this.vPrincipal.getvP());
+            this.vPrincipal.setvP(new VentanaPasajero(this.vPrincipal.getGd(), "Nuevo Pasajero", true, true, true, true));
+            this.vPrincipal.getEscritorio().add(this.vPrincipal.getvP());
         }
         if (e.getSource().equals(this.vPrincipal.getItemMenuList().get(3))) {
-        this.vPrincipal.setvV(new VentanaViaje("Nuevo Pasajero", true, true, true, true));
-        this.vPrincipal.getEscritorio().add(this.vPrincipal.getvV());
+            this.vPrincipal.setvV(new VentanaViaje(this.vPrincipal.getGd(), "Nuevo Viaje", true, true, true, true));
+            this.vPrincipal.getEscritorio().add(this.vPrincipal.getvV());
         }
         if (e.getSource().equals(this.vPrincipal.getItemMenuList().get(4))) {
-        this.vPrincipal.setvB(new VentanaBoleto("Nuevo Boleto", true, true, true, true));
-        this.vPrincipal.getEscritorio().add(this.vPrincipal.getvB());
+            this.vPrincipal.setvB(new VentanaBoleto(this.vPrincipal.getGd(), "Nuevo Boleto", true, true, true, true));
+            this.vPrincipal.getEscritorio().add(this.vPrincipal.getvB());
         }
     }
 

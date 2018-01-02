@@ -6,10 +6,32 @@
 
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import vista.VentanaCompania;
+
 /**
  *
- * @author Administrador
+ * @author David Cornejo
  */
-public class EventoVentanaCompania {
+public class EventoVentanaCompania implements ActionListener{
+    
+    private VentanaCompania vCompania;
+
+    public EventoVentanaCompania(VentanaCompania vCompania) {
+        this.vCompania = vCompania;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(vCompania.getbGuardar())){
+            
+            String nombre = this.vCompania.getTxtList().get(0).getText();
+            String nUnidades = this.vCompania.getTxtList().get(1).getText();
+            int terminal = this.vCompania.getComboBox().getSelectedIndex();
+            
+            
+        }
+    }
     
 }

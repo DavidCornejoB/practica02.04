@@ -38,9 +38,10 @@ public class VentanaBoleto extends JInternalFrame {
     private GestionDato gd;
     private List<JComboBox> comboBox;
 
-    public VentanaBoleto(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
+    public VentanaBoleto(GestionDato gd, String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
         this.setBounds(440, 0, 400, 300);
+        this.gd = gd;
         this.setVisible(true);
         this.iniciaComponentes();
     }
@@ -188,6 +189,24 @@ public class VentanaBoleto extends JInternalFrame {
     public void setbGenerar(JButton bGenerar) {
         this.bGenerar = bGenerar;
     }
+
+    public GestionDato getGd() {
+        return gd;
+    }
+
+    public void setGd(GestionDato gd) {
+        this.gd = gd;
+    }
+
+    public List<JComboBox> getComboBox() {
+        return comboBox;
+    }
+
+    public void setComboBox(List<JComboBox> comboBox) {
+        this.comboBox = comboBox;
+    }
+    
+    
 
 
 }

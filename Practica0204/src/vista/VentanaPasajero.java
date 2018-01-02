@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vista;
 
 //import controlador.EventoVentanaDocente;
-
+import controlador.EventoVentanaPasajero;
 import controlador.GestionDato;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,14 +22,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import modelo.Pasajero;
 import modelo.Persona;
-//import modelo.Docente;
 
 /**
  *
- * @author Administrador
+ * @author David Cornejo
  */
-public class VentanaPasajero extends JInternalFrame{
+public class VentanaPasajero extends JInternalFrame {
 
     private JPanel panel;
     private List<JLabel> lblList;
@@ -44,81 +43,71 @@ public class VentanaPasajero extends JInternalFrame{
     private Object datos[][];
     private GestionDato gd;
 
-    public VentanaPasajero(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
+    public VentanaPasajero(GestionDato gd, String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
         this.setBounds(440, 0, 400, 300);
+        this.gd = gd;
         this.setVisible(true);
         this.iniciaComponentes();
     }
-    
+
     public void iniciaComponentes() {
-        
+
         this.panel = new JPanel();
-        JPanel panelCampos = new JPanel(new GridLayout(3,2));
-       
-        
+        JPanel panelCampos = new JPanel(new GridLayout(3, 2));
+
         this.lblList = new ArrayList();
         this.lblList.add(new JLabel("Nombre:"));
         this.lblList.add(new JLabel("Apellido:"));
         this.lblList.add(new JLabel("Cédula:"));
-       
-        
-        
+
         this.txtList = new ArrayList();
         this.txtList.add(new JTextField(15));
         this.txtList.add(new JTextField(15));
         this.txtList.add(new JTextField(15));
-       
-        
+
         //this.gd.
         this.bGuardar = new JButton("Guardar");
-        //this.bGuardar.addActionListener(new EventoVentanaPersona(this));
-        
+        this.bGuardar.addActionListener(new EventoVentanaPasajero(this));
 
         this.encabezado = new Object[4];
-        this.encabezado[0]="N°";
-        this.encabezado[1]="Nombre";
-        this.encabezado[2]="Apellido";
-        this.encabezado[3]="Cedula";
-       
-        
+        this.encabezado[0] = "N°";
+        this.encabezado[1] = "Nombre";
+        this.encabezado[2] = "Apellido";
+        this.encabezado[3] = "Cedula";
 
-        //        this.datos= this.cargaDocente(this.gd.getPersonas().size(),6);
-
-        this.modeloTabla = new DefaultTableModel(this.datos,this.encabezado);
+        this.datos = this.cargaPasajero(this.gd.getPasajeroList().size(), 4);
+        this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
         this.tabla = new JTable(this.modeloTabla);
         this.scroll = new JScrollPane(this.tabla);
-        
+
         panelCampos.add(this.lblList.get(0));
         panelCampos.add(this.txtList.get(0));
         panelCampos.add(this.lblList.get(1));
         panelCampos.add(this.txtList.get(1));
         panelCampos.add(this.lblList.get(2));
         panelCampos.add(this.txtList.get(2));
-        
-        
-        
+
         this.panel.add(panelCampos);
         this.panel.add(bGuardar);
         this.panel.add(this.scroll);
         this.add(this.panel);
 
     }
-    
-    /* public Object[][] cargaPasajero(int f, int c){
-    Object [][]retorno= new Object[f][c];
-    int i = 0;
-    for(Persona p: this.gd.getPersonas()){
-    retorno[i][0]= i+1;
-    retorno[i][1]= p.getNombre();
-    retorno[i][2]= p.getApellido();
-    retorno[i][3]= p.getCedula();
-    retorno[i][4]= p.getEdad();
-    
-    i++;
+
+    public Object[][] cargaPasajero(int f, int c) {
+        Object[][] retorno = new Object[f][c];
+        int i = 0;
+        for (Pasajero p : this.gd.getPasajeroList()) {
+            retorno[i][0] = i + 1;
+            retorno[i][1] = p.getNombre();
+            retorno[i][2] = p.getApellido();
+            retorno[i][3] = p.getCedula();
+
+            i++;
+        }
+        return retorno;
     }
-    return retorno;
-    }*/
 
     public JPanel getPanel() {
         return panel;
@@ -207,7 +196,5 @@ public class VentanaPasajero extends JInternalFrame{
     public void setbGenerar(JButton bGenerar) {
         this.bGenerar = bGenerar;
     }
-    
-    
 
 }

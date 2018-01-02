@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.EventoVentanaTerminal;
 import controlador.GestionDato;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,6 +28,7 @@ import modelo.Terminal;
  * @author User
  */
 public class VentanaTerminal extends JInternalFrame {
+
     private JPanel panel;
     private List<JLabel> lblList;
     private List<JTextField> txtList;
@@ -35,64 +37,59 @@ public class VentanaTerminal extends JInternalFrame {
     private DefaultTableModel modeloTabla;
     private JTable tabla;
     private JScrollPane scroll;
-    private Object encabezado[];
-    private Object datos[][];
+    private Object [] encabezado;
+    private Object [][] datos;
     private GestionDato gd;
-   
 
-    public VentanaTerminal(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
+    public VentanaTerminal(GestionDato gd, String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
         super(title, resizable, closable, maximizable, iconifiable);
         this.setBounds(440, 0, 400, 300);
+        this.gd = gd;
         this.setVisible(true);
         this.iniciaComponentes();
     }
 
     public void iniciaComponentes() {
-        
+
         this.panel = new JPanel();
-        JPanel panelCampos = new JPanel(new GridLayout(2,2));
-        JPanel pBotones = new JPanel(new BorderLayout(0,0));
-        
+        JPanel panelCampos = new JPanel(new GridLayout(2, 2));
+        JPanel pBotones = new JPanel(new BorderLayout(0, 0));
+
         this.lblList = new ArrayList();
         this.lblList.add(new JLabel("Nombre:"));
         this.lblList.add(new JLabel("Direccion:"));
 
-        
         this.txtList = new ArrayList();
         this.txtList.add(new JTextField(15));
         this.txtList.add(new JTextField(15));
-        
+
         this.bGuardar = new JButton("Guardar");
-        //this.bGuardar.addActionListener(new EventoVentanaDocente(this));
-        
-        
-        //this.bGenerar.addActionListener(new EventoVentanaDocente(this));
-        
+        this.bGuardar.addActionListener(new EventoVentanaTerminal(this));
+
         this.encabezado = new Object[3];
-        this.encabezado[0]="N°";
-        this.encabezado[1]="Nombre";
-        this.encabezado[2]="Direccion";
-        
+        this.encabezado[0] = "N°";
+        this.encabezado[1] = "Nombre";
+        this.encabezado[2] = "Direccion";
 
-        //this.datos= this.cargaDocente(this.gd.getDocenteList().size(),6);
+        this.datos = this.cargaTerminal(this.gd.getTerminalList().size(), 3);
 
-        this.modeloTabla = new DefaultTableModel(this.datos,this.encabezado);
+        this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
         this.tabla = new JTable(this.modeloTabla);
         this.scroll = new JScrollPane(this.tabla);
-        
+
         panelCampos.add(this.lblList.get(0));
         panelCampos.add(this.txtList.get(0));
         panelCampos.add(this.lblList.get(1));
         panelCampos.add(this.txtList.get(1));
-        
+
         panel.add(panelCampos);
         panel.add(this.bGuardar);
-          
+
         this.panel.add(this.scroll);
         this.add(this.panel);
 
     }
-    
+
     public Object[][] cargaTerminal(int f, int c) {
         Object[][] retorno = new Object[f][c];
         int i = 0;
@@ -185,5 +182,12 @@ public class VentanaTerminal extends JInternalFrame {
     public void setbGenerar(JButton bGenerar) {
         this.bGenerar = bGenerar;
     }
-    
+
+    public GestionDato getGd() {
+        return gd;
+    }
+
+    public void setGd(GestionDato gd) {
+        this.gd = gd;
+    }
 }

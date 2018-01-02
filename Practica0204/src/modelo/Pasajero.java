@@ -14,9 +14,8 @@ public class Pasajero extends Persona{
     
     private Persona persona;
 
-    public Pasajero(Persona persona, String nombre, String apellido, String cedula) {
+    public Pasajero(String nombre, String apellido, String cedula) {
         super(nombre, apellido, cedula);
-        this.persona = persona;
     }
 
     public Persona getPersona() {
