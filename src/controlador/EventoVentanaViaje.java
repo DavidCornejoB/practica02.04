@@ -17,7 +17,6 @@ import vista.VentanaViaje;
 public class EventoVentanaViaje implements ActionListener {
 
     private VentanaViaje vViaje;
-    private GestionDato gd;
 
     public EventoVentanaViaje(VentanaViaje vViaje) {
         this.vViaje = vViaje;
@@ -31,6 +30,10 @@ public class EventoVentanaViaje implements ActionListener {
             int compania = this.vViaje.getComboBox().getSelectedIndex();
             String destino = this.vViaje.getTxtList().get(0).getText();
             long id = 0;
+            
+            Viaje v = new Viaje(id, this.vViaje.getGd().getCompaniaList().get(compania), destino);
+            this.vViaje.getGd().insertarViaje(v);
+            this.vViaje.getGd().leerViaje();
 
             this.vViaje.getGd().addViaje(new Viaje(id, this.vViaje.getGd().getCompaniaList().get(compania), destino));
             this.vViaje.getModeloTabla().setDataVector(this.cargaViaje(this.vViaje.getGd().getViajeList().size(), 3), this.vViaje.getEncabezado());
@@ -47,7 +50,6 @@ public class EventoVentanaViaje implements ActionListener {
             retorno[i][0] = a + 1;
             retorno[i][1] = v.getCompania().getNombre();
             retorno[i][2] = v.getDestino();
-            this.gd.insertarViaje(v);
             i++;
         }
         return retorno;

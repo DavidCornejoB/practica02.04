@@ -32,6 +32,10 @@ public class EventoVentanaPasajero implements ActionListener {
             String apellido = vPasajero.getTxtList().get(1).getText();
             String cedula = vPasajero.getTxtList().get(2).getText();
             long id = 0;
+            
+            Pasajero p = new Pasajero(id, nombre, apellido, cedula);
+            this.vPasajero.getGd().insertarPasajero(p);
+            this.vPasajero.getGd().leerPasajero();
 
             this.vPasajero.getGd().addPasajero(new Pasajero(id, nombre, apellido, cedula));
             this.vPasajero.getModeloTabla().setDataVector(this.cargaPasajero(this.vPasajero.getGd().getPasajeroList().size(), 4), this.vPasajero.getEncabezado());

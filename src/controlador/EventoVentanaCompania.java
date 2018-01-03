@@ -35,6 +35,10 @@ public class EventoVentanaCompania implements ActionListener{
             
             int numUnidades = Integer.parseInt(nUnidades);
             
+            Compania c = new Compania(id, nombre, numUnidades, this.vCompania.getGd().getTerminalList().get(terminal));
+            this.vCompania.getGd().insertarCompania(c);
+            this.vCompania.getGd().leerCompania();
+            
             this.vCompania.getGd().addCompania(new Compania(id, nombre, numUnidades, this.vCompania.getGd().getTerminalList().get(terminal)));
             this.vCompania.getModeloTabla().setDataVector(this.cargaCompania(this.vCompania.getGd().getCompaniaList().size(), 4), this.vCompania.getEncabezado());
 
@@ -55,7 +59,6 @@ public class EventoVentanaCompania implements ActionListener{
             retorno[i][1] = com.getNombre();
             retorno[i][2] = com.getNumUnidades();
             retorno[i][3] = com.getTerminal().getNombre();
-            this.gd.insertarCompania(com);
             i++;
         }
         

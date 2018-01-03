@@ -122,7 +122,7 @@ public class GestionDato {
         return retorno;
     }
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("Practica0204PU");
 
     public boolean insertarTerminal(Terminal t) {
         boolean retorno = false;
