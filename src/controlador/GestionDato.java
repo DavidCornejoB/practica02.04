@@ -1,9 +1,13 @@
 package controlador;
 
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import modelo.Boleto;
 import modelo.Compania;
 import modelo.Pasajero;
+import modelo.Persona;
 import modelo.Terminal;
 import modelo.Viaje;
 
@@ -214,5 +218,6 @@ public class GestionDato {
         em.getTransaction().commit();
         return retorno;
     }
+
 
 }
