@@ -29,8 +29,9 @@ public class EventoVentanaViaje implements ActionListener {
 
             int compania = this.vViaje.getComboBox().getSelectedIndex();
             String destino = this.vViaje.getTxtList().get(0).getText();
+            long id = 0;
 
-            this.vViaje.getGd().addViaje(new Viaje(this.vViaje.getGd().getCompaniaList().get(compania), destino));
+            this.vViaje.getGd().addViaje(new Viaje(id, this.vViaje.getGd().getCompaniaList().get(compania), destino));
             this.vViaje.getModeloTabla().setDataVector(this.cargaViaje(this.vViaje.getGd().getViajeList().size(), 3), this.vViaje.getEncabezado());
             this.vViaje.getTxtList().get(0).setText("");
             this.vViaje.getComboBox().setSelectedIndex(-1);

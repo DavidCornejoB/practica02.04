@@ -1,7 +1,7 @@
-
 package controlador;
 
 import java.util.List;
+import modelo.Boleto;
 import modelo.Compania;
 import modelo.Pasajero;
 import modelo.Terminal;
@@ -12,16 +12,18 @@ import vista.VentanaPrincipal;
 public class GestionDato {
 
     private List<Terminal> terminalList;
+    private List<Boleto> boletoList;
     private List<Compania> companiaList;
     private List<Pasajero> pasajeroList;
     private List<Viaje> viajeList;
     private VentanaPrincipal vPrincipal;
 
-    public GestionDato(List<Terminal> terminalList, List<Compania> companiaList, List<Pasajero> pasajeroList, List<Viaje> viajeList) {
+    public GestionDato(List<Terminal> terminalList, List<Compania> companiaList, List<Pasajero> pasajeroList, List<Viaje> viajeList, List<Boleto> boletoList) {
         this.terminalList = terminalList;
         this.companiaList = companiaList;
         this.pasajeroList = pasajeroList;
         this.viajeList = viajeList;
+        this.boletoList = boletoList;
     }
 
     public boolean addTerminal(Terminal t) {
@@ -38,6 +40,10 @@ public class GestionDato {
 
     public boolean addViaje(Viaje v) {
         return this.viajeList.add(v);
+    }
+
+    public boolean addBoleto(Boleto b) {
+        return this.boletoList.add(b);
     }
 
     public List<Terminal> getTerminalList() {
@@ -72,6 +78,14 @@ public class GestionDato {
         this.viajeList = viajeList;
     }
 
+    public List<Boleto> getBoletoList() {
+        return boletoList;
+    }
+
+    public void setBoletoList(List<Boleto> boletoList) {
+        this.boletoList = boletoList;
+    }
+
     public VentanaPrincipal getvPrincipal() {
         return vPrincipal;
     }
@@ -103,10 +117,10 @@ public class GestionDato {
         }
         return retorno;
     }
-    
+
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
-    
-    public boolean insertarTerminal(Terminal t){
+
+    public boolean insertarTerminal(Terminal t) {
         boolean retorno = false;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -115,16 +129,17 @@ public class GestionDato {
         retorno = true;
         return retorno;
     }
-    public List<Terminal> leerTerminal(){
-        List<Terminal> retorno= null;
+
+    public List<Terminal> leerTerminal() {
+        List<Terminal> retorno = null;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();
         em.getTransaction().commit();
         return retorno;
     }
-    
-    public boolean insertarViaje(Viaje v){
+
+    public boolean insertarViaje(Viaje v) {
         boolean retorno = false;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -133,16 +148,17 @@ public class GestionDato {
         retorno = true;
         return retorno;
     }
-    public List<Viaje> leerViaje(){
-        List<Viaje> retorno= null;
+
+    public List<Viaje> leerViaje() {
+        List<Viaje> retorno = null;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         retorno = em.createQuery("SELECT t FROM Viaje v ORDER BY t.id").getResultList();
         em.getTransaction().commit();
         return retorno;
     }
-    
-     public boolean insertarPersona(Persona p){
+
+    public boolean insertarPersona(Persona p) {
         boolean retorno = false;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -151,16 +167,17 @@ public class GestionDato {
         retorno = true;
         return retorno;
     }
-    public List<Persona> leerPersona(){
-        List<Persona> retorno= null;
+
+    public List<Persona> leerPersona() {
+        List<Persona> retorno = null;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();
         em.getTransaction().commit();
         return retorno;
     }
-    
-     public boolean insertarCompania(Compania c){
+
+    public boolean insertarCompania(Compania c) {
         boolean retorno = false;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -169,17 +186,17 @@ public class GestionDato {
         retorno = true;
         return retorno;
     }
-    
-    public List<Compania> leerCompania(){
-        List<Compania> retorno= null;
+
+    public List<Compania> leerCompania() {
+        List<Compania> retorno = null;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();
         em.getTransaction().commit();
         return retorno;
     }
-    
-     public boolean insertarBoleto(Boleto b){
+
+    public boolean insertarBoleto(Boleto b) {
         boolean retorno = false;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -188,9 +205,9 @@ public class GestionDato {
         retorno = true;
         return retorno;
     }
-    
-    public List<Boleto> leerBoleto(){
-        List<Boleto> retorno= null;
+
+    public List<Boleto> leerBoleto() {
+        List<Boleto> retorno = null;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();

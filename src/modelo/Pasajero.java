@@ -1,13 +1,11 @@
-
-
 package modelo;
 
-public class Pasajero extends Persona{
-    
+public class Pasajero extends Persona {
+
     private Persona persona;
 
-    public Pasajero(String nombre, String apellido, String cedula) {
-        super(nombre, apellido, cedula);
+    public Pasajero(long id, String nombre, String apellido, String cedula) {
+        super(id, nombre, apellido, cedula);
     }
 
     public Persona getPersona() {
@@ -21,5 +19,5 @@ public class Pasajero extends Persona{
     @Override
     public String toString() {
         return "Pasajero{" + "persona=" + persona + '}';
-    } 
+    }
 }

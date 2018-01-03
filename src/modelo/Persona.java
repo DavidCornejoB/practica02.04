@@ -12,7 +12,8 @@ public class Persona {
     private String apellido;
     private String cedula;
 
-    public Persona(String nombre, String apellido, String cedula) {
+    public Persona(long id, String nombre, String apellido, String cedula) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;

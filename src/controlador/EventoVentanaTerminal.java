@@ -29,8 +29,9 @@ public class EventoVentanaTerminal implements ActionListener {
 
             String nombre = this.vTerminal.getTxtList().get(0).getText();
             String direccion = this.vTerminal.getTxtList().get(0).getText();
+            long id = 0;
 
-            this.vTerminal.getGd().addTerminal(new Terminal(nombre, direccion));
+            this.vTerminal.getGd().addTerminal(new Terminal(id, nombre, direccion));
             this.vTerminal.getModeloTabla().setDataVector(this.cargaTerminal(this.vTerminal.getGd().getTerminalList().size(), 3), this.vTerminal.getEncabezado());
             this.vTerminal.getTxtList().get(0).setText("");
             this.vTerminal.getTxtList().get(1).setText("");
