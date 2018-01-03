@@ -18,6 +18,7 @@ import vista.VentanaBoleto;
 public class EventoVentanaBoleto implements ActionListener {
 
     private VentanaBoleto vBoleto;
+    private GestionDato gd;
 
     public EventoVentanaBoleto(VentanaBoleto vBoleto) {
         this.vBoleto = vBoleto;
@@ -62,6 +63,7 @@ public class EventoVentanaBoleto implements ActionListener {
             retorno[i][1] = b.getPasajero().getNombre() + " " + b.getPasajero().getApellido();
             retorno[i][2] = b.getViaje().getDestino();
             retorno[i][3] = b.getNumBoletos();
+            this.gd.insertarBoleto(b);
             i++;
 
         }

@@ -17,6 +17,7 @@ import vista.VentanaPasajero;
 public class EventoVentanaPasajero implements ActionListener {
 
     private VentanaPasajero vPasajero;
+    private GestionDato gd;
 
     public EventoVentanaPasajero(VentanaPasajero vPasajero) {
         this.vPasajero = vPasajero;
@@ -51,6 +52,7 @@ public class EventoVentanaPasajero implements ActionListener {
             retorno[i][1] = p.getNombre();
             retorno[i][2] = p.getApellido();
             retorno[i][3] = p.getCedula();
+            this.gd.insertarPasajero(p);
             i++;
 
         }

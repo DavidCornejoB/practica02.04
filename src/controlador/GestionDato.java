@@ -162,7 +162,7 @@ public class GestionDato {
         return retorno;
     }
 
-    public boolean insertarPersona(Persona p) {
+    public boolean insertarPasajero(Pasajero p) {
         boolean retorno = false;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -172,8 +172,8 @@ public class GestionDato {
         return retorno;
     }
 
-    public List<Persona> leerPersona() {
-        List<Persona> retorno = null;
+    public List<Pasajero> leerPasajero() {
+        List<Pasajero> retorno = null;
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         retorno = em.createQuery("SELECT t FROM Terminal t ORDER BY t.id").getResultList();

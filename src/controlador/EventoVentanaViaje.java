@@ -17,6 +17,7 @@ import vista.VentanaViaje;
 public class EventoVentanaViaje implements ActionListener {
 
     private VentanaViaje vViaje;
+    private GestionDato gd;
 
     public EventoVentanaViaje(VentanaViaje vViaje) {
         this.vViaje = vViaje;
@@ -46,6 +47,7 @@ public class EventoVentanaViaje implements ActionListener {
             retorno[i][0] = a + 1;
             retorno[i][1] = v.getCompania().getNombre();
             retorno[i][2] = v.getDestino();
+            this.gd.insertarViaje(v);
             i++;
         }
         return retorno;

@@ -18,6 +18,7 @@ import vista.VentanaCompania;
 public class EventoVentanaCompania implements ActionListener{
     
     private VentanaCompania vCompania;
+    private GestionDato gd;
 
     public EventoVentanaCompania(VentanaCompania vCompania) {
         this.vCompania = vCompania;
@@ -54,6 +55,7 @@ public class EventoVentanaCompania implements ActionListener{
             retorno[i][1] = com.getNombre();
             retorno[i][2] = com.getNumUnidades();
             retorno[i][3] = com.getTerminal().getNombre();
+            this.gd.insertarCompania(com);
             i++;
         }
         

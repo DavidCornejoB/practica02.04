@@ -17,6 +17,7 @@ import vista.VentanaTerminal;
 public class EventoVentanaTerminal implements ActionListener {
 
     private VentanaTerminal vTerminal;
+    private GestionDato gd;
 
     public EventoVentanaTerminal(VentanaTerminal vTerminal) {
         this.vTerminal = vTerminal;
@@ -47,7 +48,7 @@ public class EventoVentanaTerminal implements ActionListener {
             retorno[i][0] = i + 1;
             retorno[i][1] = t.getNombre();
             retorno[i][2] = t.getDireccion();
-
+            this.gd.insertarTerminal(t);
             i++;
         }
         return retorno;
