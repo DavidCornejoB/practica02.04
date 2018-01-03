@@ -5,11 +5,13 @@
  */
 package vista;
 
+import controlador.EventoVentanaBoleto;
 import controlador.GestionDato;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
@@ -19,13 +21,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import modelo.Boleto;
+import modelo.Pasajero;
+import modelo.Viaje;
 
 /**
  *
  * @author User
  */
 public class VentanaBoleto extends JInternalFrame {
-     private JPanel panel;
+
+    private JPanel panel;
     private List<JLabel> lblList;
     private List<JTextField> txtList;
     private JButton bGuardar;
@@ -59,23 +65,20 @@ public class VentanaBoleto extends JInternalFrame {
 
         this.txtList = new ArrayList();
         this.txtList.add(new JTextField(15));
-        
 
-        this.comboBox=new ArrayList<>();
-        this.comboBox.add(new JComboBox());
-        this.comboBox.add(new JComboBox());
-        
+        this.comboBox = new ArrayList<>();
+        this.comboBox.add(new JComboBox(this.cargaComboPasajero(this.getGd().getPasajeroList().size())));
+        this.comboBox.add(new JComboBox(this.cargaComboViaje(this.getGd().getViajeList().size())));
+
         this.bGuardar = new JButton("Guardar");
-        //this.bGuardar.addActionListener(new EventoVentanaDocente(this));
+        this.bGuardar.addActionListener(new EventoVentanaBoleto(this));
 
-        //this.bGenerar.addActionListener(new EventoVentanaDocente(this));
         this.encabezado = new Object[3];
         this.encabezado[0] = "Pasajero";
         this.encabezado[1] = "Viaje";
         this.encabezado[2] = "N° Boletos";
-        
 
-        //this.cargaTerminal(this.gd.getTerminalList().size(), 3);
+        this.cargaBoleto(this.gd.getBoletoList().size(), 3);
 
         this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
         this.tabla = new JTable(this.modeloTabla);
@@ -87,8 +90,7 @@ public class VentanaBoleto extends JInternalFrame {
         panelCampos.add(this.comboBox.get(1));
         panelCampos.add(this.lblList.get(2));
         panelCampos.add(this.txtList.get(0));
-        
-        
+
         panel.add(panelCampos);
         panel.add(this.bGuardar);
 
@@ -97,18 +99,44 @@ public class VentanaBoleto extends JInternalFrame {
 
     }
 
-    /* public Object[][] cargaViaje(int f, int c) {
-    Object[][] retorno = new Object[f][c];
-    int i = 0;
-    for (Compania com : this.gd.getCompaniaList()) {
-    retorno[i][0] = com.getNombre();
-    retorno[i][1] = com.getNumUnidades();
-    retorno[i][2] = com.getTerminal().getNombre();
-    
-    i++;
+    public Object[][] cargaBoleto(int f, int c) {
+        Object[][] retorno = new Object[f][c];
+        int i = 0;
+        for (Boleto b : this.gd.getBoletoList()) {
+            retorno[i][0] = b.getPasajero().getNombre() + " " + b.getPasajero().getApellido();
+            retorno[i][1] = b.getViaje().getDestino();
+            retorno[i][2] = b.getNumBoletos();
+
+            i++;
+        }
+        return retorno;
     }
-    return retorno;
-    }*/
+
+    private Object[] cargaComboPasajero(int size) {
+
+        Object[] retorno = new Object[size];
+        int i = 0;
+
+        for (Pasajero p : this.gd.getPasajeroList()) {
+            retorno[i] = p.getNombre() + " " + p.getApellido();
+            i++;
+        }
+
+        return retorno;
+    }
+
+    private Object[] cargaComboViaje(int size) {
+
+        Object[] retorno = new Object[size];
+        int i = 0;
+
+        for (Viaje v : this.gd.getViajeList()) {
+            retorno[i] = v.getDestino();
+            i++;
+        }
+
+        return retorno;
+    }
 
     public JPanel getPanel() {
         return panel;
@@ -205,8 +233,5 @@ public class VentanaBoleto extends JInternalFrame {
     public void setComboBox(List<JComboBox> comboBox) {
         this.comboBox = comboBox;
     }
-    
-    
-
 
 }
